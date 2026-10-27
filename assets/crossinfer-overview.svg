@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="460" viewBox="0 0 1120 460" role="img" aria-labelledby="title description">
+  <title id="title">CrossInfer: shared context, separate engines</title>
+  <desc id="description">Video frames pass through visual encoding and shared TABM buffers into versioned context. Stateful streaming overlaps preparation of a new context with answering on an earlier version. Concurrent requests run on separate language engines with private response state. CPU and GPU roles depend on the platform. This is a conceptual diagram, not a measured timeline.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0 0 L7 3.5 L0 7Z" fill="#6b7d90"/>
+    </marker>
+    <style>
+      .label { font: 12px Verdana, sans-serif; fill: #596b7c; letter-spacing: 1.5px; }
+      .heading { font: 600 17px Verdana, sans-serif; fill: #192e43; }
+      .body { font: 14px Verdana, sans-serif; fill: #4d6276; }
+      .mode { font: 24px Georgia, serif; fill: #192e43; }
+      .small { font: 12px Verdana, sans-serif; fill: #596b7c; }
+      .bar { font: 14px Verdana, sans-serif; fill: #192e43; }
+      .flow { fill: none; stroke: #6b7d90; stroke-width: 1.6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1120" height="460" rx="12" fill="#ffffff"/>
+  <text class="label" x="32" y="32">SYSTEM OVERVIEW</text>
+  <text class="label" x="1088" y="32" text-anchor="end">CPU / GPU / NPU</text>
+  <rect x="32" y="64" width="168" height="94" rx="9" fill="#f4f6f8" stroke="#dce3e9"/>
+  <text class="heading" x="52" y="94">Video stream</text>
+  <text class="body" x="52" y="121">Frames over time</text>
+  <path class="flow" d="M200 111 H230"/>
+  <rect x="238" y="64" width="216" height="94" rx="9" fill="#fcf4e5" stroke="#e9d9b8"/>
+  <text class="heading" x="258" y="94">Visual encoding</text>
+  <text class="body" x="258" y="121">NPU / GPU frontend</text>
+  <path class="flow" d="M454 111 H484"/>
+  <rect x="492" y="64" width="246" height="94" rx="9" fill="#eaf4f0" stroke="#c6ded4"/>
+  <text class="heading" x="512" y="94">Shared visual buffers</text>
+  <text class="body" x="512" y="121">TABM</text>
+  <path class="flow" d="M738 111 H768"/>
+  <rect x="776" y="64" width="312" height="94" rx="9" fill="#eef2fa" stroke="#d1dbed"/>
+  <text class="heading" x="796" y="94">Versioned context</text>
+  <rect x="796" y="108" width="58" height="28" rx="5" fill="#dde7f6"/>
+  <rect x="880" y="108" width="58" height="28" rx="5" fill="#cbdcf1"/>
+  <rect x="964" y="108" width="58" height="28" rx="5" fill="#b8cee9"/>
+  <text class="bar" x="825" y="127" text-anchor="middle">v1</text>
+  <text class="bar" x="909" y="127" text-anchor="middle">v2</text>
+  <text class="bar" x="993" y="127" text-anchor="middle">v3</text>
+  <path class="flow" d="M854 122 H873"/>
+  <path class="flow" d="M938 122 H957"/>
+  <path d="M932 158 V188 H289 M932 188 H831" fill="none" stroke="#b8c5d1" stroke-width="1.6"/>
+  <path class="flow" d="M289 188 V218"/>
+  <path class="flow" d="M831 188 V218"/>
+  <rect x="32" y="226" width="514" height="177" rx="10" fill="#f8fafc" stroke="#dce3e9"/>
+  <text class="mode" x="52" y="258">Stateful streaming</text>
+  <text class="small" x="52" y="282">Advance history while answering</text>
+  <text class="small" x="52" y="328">Engine A</text>
+  <rect x="150" y="308" width="374" height="31" rx="5" fill="#dde7f6"/>
+  <text class="bar" x="166" y="329">Prepare context v2</text>
+  <text class="small" x="52" y="370">Engine B</text>
+  <rect x="150" y="350" width="374" height="31" rx="5" fill="#d8ebe3"/>
+  <text class="bar" x="166" y="371">Generate answer on v1</text>
+  <rect x="574" y="226" width="514" height="177" rx="10" fill="#f8fafc" stroke="#dce3e9"/>
+  <text class="mode" x="594" y="258">Concurrent requests</text>
+  <text class="small" x="594" y="282">Answer independent queries in parallel</text>
+  <text class="small" x="594" y="328">Engine A</text>
+  <rect x="692" y="308" width="374" height="31" rx="5" fill="#dde7f6"/>
+  <text class="bar" x="708" y="329">Query q1 / private response state</text>
+  <text class="small" x="594" y="370">Engine B</text>
+  <rect x="692" y="350" width="374" height="31" rx="5" fill="#d8ebe3"/>
+  <text class="bar" x="708" y="371">Query q2 / private response state</text>
+  <text class="body" x="560" y="438" text-anchor="middle">Each query binds a stable version. CPU/GPU roles are platform-dependent.</text>
+</svg>

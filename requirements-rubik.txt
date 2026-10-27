@@ -1,0 +1,5 @@
+# Preserve the board's matching QNN-enabled ORT; do not replace it with CPU ORT.
+numpy>=1.26,<3
+Pillow>=10
+pytest>=8
+# Model export, calibration and deployment recipes are not included.

@@ -1,0 +1,6 @@
+# Reference bindings and model-free tests on Python 3.12 / Apple Silicon.
+# Native build requires Xcode Command Line Tools and CMake.
+numpy==2.4.3
+torch==2.11.0
+mlx==0.31.1; platform_system == "Darwin"
+pytest==9.0.2
