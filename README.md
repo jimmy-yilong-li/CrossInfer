@@ -1,4 +1,4 @@
-<h1 align="center">Shared Context, Separate Engines:<br>Streaming Vision–Language Inference on Edge SoCs</h1>
+<h1 align="center">Shared Context, Separate Engines:<br>Stateful Streaming Inference for Multimodal LLMs on Edge SoCs</h1>
 
 <p align="center">
   Yilong Li<sup>1</sup>,
